@@ -228,7 +228,7 @@
 
 			<plugin>
 				<artifactId>maven-gpg-plugin</artifactId>
-					<version>1.6</version>
+				<version>1.6</version>
 				<executions>
 					<execution>
 						<id>sign-artifacts</id>
@@ -240,18 +240,23 @@
 				</executions>
 			</plugin>
 
+			<!--   -->
 			<plugin>
 				<artifactId>maven-deploy-plugin</artifactId>
 				<version>3.0.0-M1</version>
 				<executions>
 					<execution>
-						<id>deploy-on-sonatype</id>
+						<id>skip-default-deploy</id>
 						<phase>deploy</phase>
 						<goals>
 							<goal>deploy</goal>
 						</goals>
+
 					</execution>
 				</executions>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
 			</plugin>
 
 			<plugin>
