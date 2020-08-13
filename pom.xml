@@ -222,7 +222,7 @@
 				</executions>
 			</plugin>
 
-			<!--DA VERIFICARE!!! -->
+
 			<plugin>
 				<artifactId>maven-deploy-plugin</artifactId>
 				<version>3.0.0-M1</version>
@@ -230,6 +230,36 @@
 					<execution>
 						<id>default-deploy</id>
 						<phase>none</phase>
+					</execution>
+				</executions>
+			</plugin>
+
+
+			<plugin>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>bintray-deploy</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+						<configuration>
+							<altDeploymentRepository>bintray::default::https://api.bintray.com/maven/serendipity-projects/maven/${bintray.package}</altDeploymentRepository>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
@@ -255,56 +285,6 @@
 			</plugin>
 
 		</plugins>
-
-		<extensions>
-			<extension>
-				<groupId>org.apache.maven.wagon</groupId>
-				<artifactId>wagon-webdav-jackrabbit</artifactId>
-				<version>3.3.3</version>
-			</extension>
-		</extensions>
-
 	</build>
 
-	<profiles>
-
-
-		<profile>
-			<id>release</id>
-			<build>
-				<plugins>
-
-
-					<plugin>
-						<artifactId>maven-gpg-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>sign-artifacts</id>
-								<phase>verify</phase>
-								<goals>
-									<goal>sign</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-
-					<plugin>
-						<artifactId>maven-deploy-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>bintray-deploy</id>
-								<phase>deploy</phase>
-								<goals>
-									<goal>deploy</goal>
-								</goals>
-								<configuration>
-									<altDeploymentRepository>bintray::default::https://api.bintray.com/maven/serendipity-projects/maven/${bintray.package}</altDeploymentRepository>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
 </project>
