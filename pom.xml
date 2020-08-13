@@ -10,7 +10,7 @@
 	<packaging>pom</packaging>
 
 	<name>Basic parent pom for maven build configuration</name>
-	<description>Parent pom to inherite basic configuration of public Serendipity projects</description>
+	<description>Serendipity S.r.l.: parent pom to inherite basic configuration of public projects</description>
 
 	<url>http://www.serendigity.it</url>
 
