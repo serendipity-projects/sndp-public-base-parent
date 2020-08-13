@@ -29,9 +29,9 @@
 	</developers>
 
 	<scm>
-		<url>https://github.com/serendipity-projects/sndp-public-base-parent.git</url>
-		<connection>scm:git:git://github.com/serendipity-projects/sndp-public-base-parent.git</connection>
-		<developerConnection>scm:git:git@github.com:serendipity-projects/sndp-public-base-parent.git</developerConnection>
+		<url>https://github.com/serendipity-projects/${project.artifactId}.git</url>
+		<connection>scm:git:git://github.com/serendipity-projects/${project.artifactId}.git</connection>
+		<developerConnection>scm:git:git@github.com:serendipity-projects/${project.artifactId}.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
 
