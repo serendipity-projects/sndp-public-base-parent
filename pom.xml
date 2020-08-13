@@ -245,14 +245,11 @@
 				<version>3.0.0-M1</version>
 				<executions>
 					<execution>
-						<id>bintray-deploy</id>
+						<id>deploy-on-sonatype</id>
 						<phase>deploy</phase>
 						<goals>
 							<goal>deploy</goal>
 						</goals>
-						<configuration>
-							<altDeploymentRepository>bintray::default::https://api.bintray.com/maven/serendipity-projects/maven/${bintray.package}</altDeploymentRepository>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
