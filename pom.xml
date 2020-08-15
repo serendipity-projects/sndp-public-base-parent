@@ -340,14 +340,6 @@
 						</goals>
 					</execution>
 
-					<execution>
-						<id>report-site</id>
-						<phase>site</phase>
-						<goals>
-							<goal>report</goal>
-						</goals>
-					</execution>
-
 				</executions>
 			</plugin>
 
@@ -403,6 +395,19 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-plugin-plugin</artifactId>
 				<version>3.6.0</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.5</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>report</report>
+						</reports>
+					</reportSet>
+				</reportSets>
 			</plugin>
 
 		</plugins>
