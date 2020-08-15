@@ -10,23 +10,25 @@
 <!--
 ! Similarly href entries are converted before they are passed to the template. ! In this case, we want the URL to remain absolute. ! The work-round is to use a dummy suffix that is removed by the template. ! This is due to be fixed in version 2.3 of the site plugin - see MSITE-159, MSHARED-189 ! Or use site:stage which does not convert these links ...
 -->
-<href>https://commons.apache.org.remove.invalid/</href>
+		<href>https://commons.apache.org.remove.invalid/</href>
 </bannerLeft>
+
 <publishDate format="dd MMMM yyyy" position="left" />
+
 <version position="left" />
 <skin>
     <groupId>org.apache.commons</groupId>
-<artifactId>commons-skin</artifactId>
-<version>4.2</version>
+		<artifactId>commons-skin</artifactId>
+		<version>4.2</version>
 </skin>
 <body>
 
     <!-- N.B. body links are automatically inherited -->
     <links>
-<item name="ApacheCon" href="http://www.apachecon.com/" />
+		<item name="Serendipity" href="https://www.serendigity.it/" />
     </links>
-    
-    
+
+
 <menu ref="reports" inherit="bottom" />
 
 
