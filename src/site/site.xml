@@ -1,0 +1,53 @@
+<project xmlns="http://maven.apache.org/DECORATION/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Apache Commons" xsi:schemaLocation="http://maven.apache.org/DECORATION/1.1.0 http://maven.apache.org/xsd/decoration-1.1.0.xsd">
+<!-- N.B. all non-body elements are automatically inherited -->
+<bannerLeft>
+<name>Apache Commons</name>
+<!--
+! Even though the default site.vm template contains code to convert relative links, this is ! actually done before the content is passed to the template, for both site:site and site:stage. ! Unfortunately, this means that the conversion is done in the context of commons-parent, which ! contains the site.xml, rather than in the context of the project being built. ! This means that relative URLs are created with an additional ../ prefix. ! The work-round is to use a dummy absolute URL that can never be used, and then remove this ! as part of the template processing. ! See MSITE-559
+-->
+<src>http://dummy.invalid/$relativePath/images/commons-logo.png</src>
+<alt>Apache Commons logo</alt>
+<!--
+! Similarly href entries are converted before they are passed to the template. ! In this case, we want the URL to remain absolute. ! The work-round is to use a dummy suffix that is removed by the template. ! This is due to be fixed in version 2.3 of the site plugin - see MSITE-159, MSHARED-189 ! Or use site:stage which does not convert these links ...
+-->
+<href>https://commons.apache.org.remove.invalid/</href>
+</bannerLeft>
+<publishDate format="dd MMMM yyyy" position="left" />
+<version position="left" />
+<skin>
+    <groupId>org.apache.commons</groupId>
+<artifactId>commons-skin</artifactId>
+<version>4.2</version>
+</skin>
+<body>
+
+    <!-- N.B. body links are automatically inherited -->
+    <links>
+<item name="ApacheCon" href="http://www.apachecon.com/" />
+    </links>
+    
+    
+<menu ref="reports" inherit="bottom" />
+
+
+</body>
+<!-- inherited -->
+<poweredBy>
+<!-- Add ApacheCon logo -->
+<logo name="Serendipity S.r.l." href="https://www.serendigity.it" img="https://serendigity.it/wp-content/uploads/2019/09/default-logo-1024x.png" />
+<!-- Keep the default logo as well -->
+<logo name="Maven" href="http://maven.apache.org/" img="http://maven.apache.org/images/logos/maven-feather.png" />
+</poweredBy>
+<!-- inherited -->
+
+<custom>
+<!--
+@project.name@ will be replaced by the template; if we used ${project.name} it would pick up Commons Parent
+-->
+<footer>
+<div class="center">
+Serendipity Open source project @project.name@.
+</div>
+</footer>
+</custom>
+</project>
