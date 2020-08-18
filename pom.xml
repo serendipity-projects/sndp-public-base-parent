@@ -226,19 +226,6 @@
 
 
 
-			<plugin>
-				<artifactId>maven-gpg-plugin</artifactId>
-				<version>1.6</version>
-				<executions>
-					<execution>
-						<id>sign-artifacts</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>sign</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
 
 			<!-- -->
 			<plugin>
@@ -475,6 +462,27 @@
 		</plugins>
 	</reporting>
 
-
+	<profiles>
+		<profile>
+			<id>sign-artifact</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>1.6</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 </project>
