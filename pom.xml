@@ -340,6 +340,7 @@
 					<excludes>
 						<exclude>it/serendigity/**/HelpMojo.*</exclude>
 					</excludes>
+					<sessionId>jacoco-session-id</sessionId>
 				</configuration>
 
 				<executions>
