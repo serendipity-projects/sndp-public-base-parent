@@ -145,6 +145,9 @@
 				<version>1.14.0</version>
 				<configuration>
 					<verbose>true</verbose>
+					<gitFlowConfig>
+						<developmentBranch>master</developmentBranch>
+					</gitFlowConfig>
 				</configuration>
 			</plugin>
 
