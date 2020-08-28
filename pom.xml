@@ -87,6 +87,18 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<junit.version>5.7.0-M1</junit.version>
 		<log4j.version>2.13.3</log4j.version>
+
+
+		<!-- SITE properties -->
+		<site.input.directory>${project.reporting.outputDirectory}</site.input.directory>
+
+		<site.output.prefix.basedir>${project.artifactId}/${project.version}</site.output.prefix.basedir>
+		<site.output.directory>${site.input.directory}/${site.output.prefix.basedir}</site.output.directory>
+
+		<site.url.home>${project.distributionManagement.site.url}${site.output.prefix.basedir}/</site.url.home>
+		<site.deploy.rootdir>${user.home}/test/maven_site</site.deploy.rootdir>
+		<site.deploy.azuredevops>scm:git:https://simorusso@dev.azure.com/simorusso/POC-MAVEN-SITE/_git/site-sample-docs</site.deploy.azuredevops>
+
 	</properties>
 
 
@@ -304,6 +316,12 @@
 
 				</dependencies>
 
+				<configuration>
+					<inputDirectory>${site.input.directory}</inputDirectory>
+					<outputDirectory>${site.output.directory}</outputDirectory>
+
+				</configuration>
+
 			</plugin>
 
 			<plugin>
@@ -492,6 +510,27 @@
 				</plugins>
 			</build>
 		</profile>
+
+		<!-- DEPLOY SITE LOCAL -->
+		<profile>
+			<id>site-local</id>
+
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+
+
+			<distributionManagement>
+				<site>
+					<id>site-deploy-local</id>
+					<name>Site deployments</name>
+					<url>file://${site.deploy.rootdir}/</url>
+				</site>
+			</distributionManagement>
+
+		</profile>
+
+
 	</profiles>
 
 </project>
