@@ -511,15 +511,10 @@
 			</build>
 		</profile>
 
-		<!-- DEPLOY SITE LOCAL -->
+		<!-- DEPLOY SITE PROFILE -->
+		<!-- LOCAL -->
 		<profile>
 			<id>site-local</id>
-
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-
-
 			<distributionManagement>
 				<site>
 					<id>site-deploy-local</id>
@@ -530,7 +525,53 @@
 
 		</profile>
 
+		<!-- GITHUB -->
+		<profile>
+			<id>site-github</id>
+
+			<properties>
+				<scm-publish.scmBranch>gh-pages</scm-publish.scmBranch>
+				<scm-publish.pubScmUrl>scm:git:git@github.com:serendipity-projects/${project.artifactId}.git</scm-publish.pubScmUrl>
+				<scm-publish.siteDocOuputDirectory>${project.build.directory}/site</scm-publish.siteDocOuputDirectory>
+			</properties>
+
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-scm-publish-plugin</artifactId>
+						<version>3.0.0</version>
+						<executions>
+							<execution>
+								<id>publish-site</id>
+								<phase>site-post-site</phase>
+								<goals>
+									<goal>publish-scm</goal>
+								</goals>
+								<configuration>
+									<tryUpdate>true</tryUpdate>
+								</configuration>
+							</execution>
+						</executions>
+						<dependencies>
+							<dependency>
+								<groupId>org.apache.maven.scm</groupId>
+								<artifactId>maven-scm-provider-gitexe</artifactId>
+								<version>1.11.2</version>
+							</dependency>
+							<dependency>
+								<groupId>org.apache.maven.scm</groupId>
+								<artifactId>maven-scm-api</artifactId>
+								<version>1.11.2</version>
+							</dependency>
+						</dependencies>
+					</plugin>
+				</plugins>
+			</build>
+
+		</profile>
 
 	</profiles>
+
 
 </project>
