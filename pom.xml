@@ -85,7 +85,7 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<junit.version>5.7.0-M1</junit.version>
+		<junit.version>5.7.0-RC1</junit.version>
 		<log4j.version>2.13.3</log4j.version>
 
 
@@ -93,12 +93,10 @@
 		<site.input.directory>${project.reporting.outputDirectory}</site.input.directory>
 
 		<site.output.prefix.basedir>${project.artifactId}/${project.version}</site.output.prefix.basedir>
-		<site.output.directory>${site.input.directory}/${site.output.prefix.basedir}</site.output.directory>
+		<site.output.directory>${project.reporting.outputDirectory}/${site.output.prefix.basedir}</site.output.directory>
 
-		<site.url.home>${project.distributionManagement.site.url}${site.output.prefix.basedir}/</site.url.home>
 		<site.deploy.rootdir>${user.home}/test/maven_site</site.deploy.rootdir>
-		<site.deploy.azuredevops>scm:git:https://simorusso@dev.azure.com/simorusso/POC-MAVEN-SITE/_git/site-sample-docs</site.deploy.azuredevops>
-
+		<site.skip.deploy>false</site.skip.deploy>
 	</properties>
 
 
@@ -138,7 +136,7 @@
 		<dependency>
 			<groupId>org.assertj</groupId>
 			<artifactId>assertj-core</artifactId>
-			<version>3.16.1</version>
+			<version>3.17.0</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -313,13 +311,34 @@
 						<version>1.9.1</version>
 					</dependency>
 
+					<!-- add support for scm -->
+					<dependency>
+						<groupId>org.apache.maven.wagon</groupId>
+						<artifactId>wagon-scm</artifactId>
+						<version>3.4.1</version>
+					</dependency>
+
+					<dependency>
+						<groupId>org.apache.maven.scm</groupId>
+						<artifactId>maven-scm-provider-gitexe</artifactId>
+						<version>1.11.2</version>
+					</dependency>
+
+					<dependency>
+						<groupId>org.apache.maven.scm</groupId>
+						<artifactId>maven-scm-api</artifactId>
+						<version>1.11.2</version>
+					</dependency>
+
+
 
 				</dependencies>
 
 				<configuration>
+
 					<inputDirectory>${site.input.directory}</inputDirectory>
 					<outputDirectory>${site.output.directory}</outputDirectory>
-
+					<skipDeploy>${site</skipDeploy>
 				</configuration>
 
 			</plugin>
@@ -514,7 +533,12 @@
 		<!-- DEPLOY SITE PROFILE -->
 		<!-- LOCAL -->
 		<profile>
-			<id>site-local</id>
+			<id>deploy-site-local</id>
+
+			<properties>
+				<site.skip.deploy>false</site.skip.deploy>
+			</properties>
+
 			<distributionManagement>
 				<site>
 					<id>site-deploy-local</id>
@@ -527,11 +551,20 @@
 
 		<!-- GITHUB -->
 		<profile>
-			<id>site-github</id>
+			<id>deploy-site-github</id>
+
+			<distributionManagement>
+				<site>
+					<id>deploy-site-github</id>
+					<name>Site deploy github</name>
+					<!-- FIXME USERRRRRR!!! -->
+					<url>scm:git:ssh://SerendipityDev@github.com/serendipity-projects/${project.artifactId}.git</url>
+				</site>
+			</distributionManagement>
 
 			<properties>
-				<scm-publish.scmBranch>gh-pages</scm-publish.scmBranch>
-				<scm-publish.pubScmUrl>scm:git:git@github.com:serendipity-projects/${project.artifactId}.git</scm-publish.pubScmUrl>
+				<site.skip.deploy>true</site.skip.deploy>
+				<scm-publish.pubScmUrl>scm:git:SerendipityDev@github.com:serendipity-projects/${project.artifactId}.git</scm-publish.pubScmUrl>
 				<scm-publish.siteDocOuputDirectory>${project.build.directory}/site</scm-publish.siteDocOuputDirectory>
 			</properties>
 
@@ -544,27 +577,17 @@
 						<executions>
 							<execution>
 								<id>publish-site</id>
-								<phase>site-post-site</phase>
+								<phase>site-deploy</phase>
 								<goals>
 									<goal>publish-scm</goal>
 								</goals>
 								<configuration>
+									<serverId>github-serendipity-projects</serverId>
+									<scmBranch>gh-pages</scmBranch>
 									<tryUpdate>true</tryUpdate>
 								</configuration>
 							</execution>
 						</executions>
-						<dependencies>
-							<dependency>
-								<groupId>org.apache.maven.scm</groupId>
-								<artifactId>maven-scm-provider-gitexe</artifactId>
-								<version>1.11.2</version>
-							</dependency>
-							<dependency>
-								<groupId>org.apache.maven.scm</groupId>
-								<artifactId>maven-scm-api</artifactId>
-								<version>1.11.2</version>
-							</dependency>
-						</dependencies>
 					</plugin>
 				</plugins>
 			</build>
