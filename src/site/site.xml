@@ -3,7 +3,7 @@
 <bannerLeft>
 <name>Serendipity Open Source Projects</name>
 
-<src>/images/opensourceproject_logo.jpeg</src>
+<src>images/opensourceproject_logo.jpeg</src>
 <alt>Open source projects by Serendipity.</alt>
 </bannerLeft>
 
@@ -23,6 +23,9 @@
 		<item name="Serendipity" href="https://www.serendigity.it/" />
     </links>
 
+
+
+	<menu ref="parent" inherit="bottom" />
 	<menu ref="reports" inherit="bottom" />
 
 

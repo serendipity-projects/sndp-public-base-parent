@@ -12,7 +12,7 @@
 	<name>Basic parent pom for maven build configuration</name>
 	<description>Parent pom in order to inherit basic configuration for the public projects</description>
 
-	<url>http://www.serendigity.it</url>
+	<url>https://serendipity-projects.github.io/${project.artifactId}</url>
 
 	<organization>
 		<name>Serendipity S.r.l.</name>
@@ -92,7 +92,7 @@
 		<!-- SITE properties -->
 		<site.input.directory>${project.reporting.outputDirectory}</site.input.directory>
 
-		<site.output.prefix.basedir>${project.artifactId}/${project.version}</site.output.prefix.basedir>
+		<site.output.prefix.basedir></site.output.prefix.basedir>
 		<site.output.directory>${project.reporting.outputDirectory}/${site.output.prefix.basedir}</site.output.directory>
 
 		<site.deploy.rootdir>${user.home}/test/maven_site</site.deploy.rootdir>
@@ -330,7 +330,11 @@
 						<version>1.11.2</version>
 					</dependency>
 
-
+					<dependency>
+						<groupId>org.apache.maven.scm</groupId>
+						<artifactId>maven-scm-manager-plexus</artifactId>
+						<version>1.11.2</version>
+					</dependency>
 
 				</dependencies>
 
@@ -338,7 +342,8 @@
 
 					<inputDirectory>${site.input.directory}</inputDirectory>
 					<outputDirectory>${site.output.directory}</outputDirectory>
-					<skipDeploy>${site</skipDeploy>
+					<stagingSiteURL>${project.distributionManagement.site.url}</stagingSiteURL>
+					<topSiteURL>${project.distributionManagement.site.url}</topSiteURL>
 				</configuration>
 
 			</plugin>
@@ -531,66 +536,42 @@
 		</profile>
 
 		<!-- DEPLOY SITE PROFILE -->
-		<!-- LOCAL -->
+		<!-- ... LOCAL -->
 		<profile>
-			<id>deploy-site-local</id>
-
-			<properties>
-				<site.skip.deploy>false</site.skip.deploy>
-			</properties>
+			<id>site-local</id>
 
 			<distributionManagement>
 				<site>
-					<id>site-deploy-local</id>
+					<id>deploy-site-local</id>
 					<name>Site deployments</name>
-					<url>file://${site.deploy.rootdir}/</url>
+					<url>file://${site.deploy.rootdir}/${project.artifactId}/</url>
+
+
 				</site>
 			</distributionManagement>
 
 		</profile>
 
-		<!-- GITHUB -->
+		<!-- ... GITHUB -->
 		<profile>
-			<id>deploy-site-github</id>
+			<id>site-github</id>
 
 			<distributionManagement>
 				<site>
 					<id>deploy-site-github</id>
 					<name>Site deploy github</name>
-					<!-- FIXME USERRRRRR!!! -->
-					<url>scm:git:ssh://SerendipityDev@github.com/serendipity-projects/${project.artifactId}.git</url>
+					<url>scm:git:https://git@github.com/serendipity-projects/${project.artifactId}/</url>
 				</site>
 			</distributionManagement>
 
-			<properties>
-				<site.skip.deploy>true</site.skip.deploy>
-				<scm-publish.pubScmUrl>scm:git:SerendipityDev@github.com:serendipity-projects/${project.artifactId}.git</scm-publish.pubScmUrl>
+			<!-- <properties> <site.skip.deploy>true</site.skip.deploy> <scm-publish.pubScmUrl>scm:git:SerendipityOfficialDev@github.com:serendipity-projects/${project.artifactId}.git</scm-publish.pubScmUrl>
 				<scm-publish.siteDocOuputDirectory>${project.build.directory}/site</scm-publish.siteDocOuputDirectory>
-			</properties>
-
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-scm-publish-plugin</artifactId>
-						<version>3.0.0</version>
-						<executions>
-							<execution>
-								<id>publish-site</id>
-								<phase>site-deploy</phase>
-								<goals>
-									<goal>publish-scm</goal>
-								</goals>
-								<configuration>
-									<serverId>github-serendipity-projects</serverId>
-									<scmBranch>gh-pages</scmBranch>
-									<tryUpdate>true</tryUpdate>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
+				</properties> <build> <plugins> <plugin> <groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-scm-publish-plugin</artifactId> <version>3.0.0</version>
+				<executions> <execution> <id>publish-site</id> <phase>site-deploy</phase>
+				<goals> <goal>publish-scm</goal> </goals> <configuration> <serverId>github-serendipity-projects</serverId>
+				<scmBranch>gh-pages</scmBranch> <tryUpdate>true</tryUpdate> </configuration>
+				</execution> </executions> </plugin> </plugins> </build> -->
 
 		</profile>
 
