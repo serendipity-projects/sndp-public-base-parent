@@ -418,7 +418,7 @@
 						<id>pre-integration-test</id>
 						<phase>pre-integration-test</phase>
 						<goals>
-							<goal>prepare-agent</goal>
+							<goal>prepare-agent-integration</goal>
 						</goals>
 						<configuration>
 							<destFile>${project.build.directory}/jacoco-it.exec</destFile>
@@ -427,16 +427,51 @@
 					</execution>
 
 					<execution>
-						<id>post-integration-test</id>
+						<id>report-integration-test</id>
 						<phase>post-integration-test</phase>
 						<goals>
-							<goal>report</goal>
+							<goal>report-integration</goal>
 						</goals>
 						<configuration>
 							<dataFile>${project.build.directory}/jacoco-it.exec</dataFile>
 							<outputDirectory>${project.reporting.outputDirectory}/jacoco-it</outputDirectory>
 						</configuration>
 					</execution>
+
+					<!-- merge all test (unit test and integration test result) -->
+					<execution>
+						<id>merge-test-result</id>
+						<goals>
+							<goal>merge</goal>
+						</goals>
+						<phase>post-integration-test</phase>
+						<configuration>
+							<fileSets>
+								<fileSet
+									implementation="org.apache.maven.shared.model.fileset.FileSet">
+									<directory>${project.build.directory}</directory>
+									<includes>
+										<include>*.exec</include>
+									</includes>
+								</fileSet>
+							</fileSets>
+							<destFile>${project.build.directory}/jacoco-all.exec</destFile>
+						</configuration>
+					</execution>
+
+					<!-- report all test (unit test and integration test result) -->
+					<execution>
+						<id>report-all-test</id>
+						<phase>post-integration-test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+						<configuration>
+							<dataFile>${project.build.directory}/jacoco-all.exec</dataFile>
+							<outputDirectory>${project.reporting.outputDirectory}/jacoco-all</outputDirectory>
+						</configuration>
+					</execution>
+
 				</executions>
 
 			</plugin>
