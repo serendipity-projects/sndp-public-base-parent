@@ -562,7 +562,7 @@
 				<artifactId>sonarqube-maven-report</artifactId>
 				<version>0.2.2</version>
 				<configuration>
-					<sonarHostURL>${sonarCloudHost}</sonarHostURL>
+					<sonarHostURL>${sonar.cloud.host}</sonarHostURL>
 				</configuration>
 			</plugin>
 
