@@ -97,6 +97,8 @@
 
 		<site.deploy.rootdir>${user.home}/test/maven_site</site.deploy.rootdir>
 		<site.skip.deploy>false</site.skip.deploy>
+		<!-- Sonar -->
+		<sonar.cloud.host>https://sonarcloud.io</sonar.cloud.host>
 	</properties>
 
 
@@ -553,6 +555,15 @@
 						</reports>
 					</reportSet>
 				</reportSets>
+			</plugin>
+
+			<plugin>
+				<groupId>nl.demon.shadowland.maven.plugins</groupId>
+				<artifactId>sonarqube-maven-report</artifactId>
+				<version>0.2.2</version>
+				<configuration>
+					<sonarHostURL>${sonarCloudHost}</sonarHostURL>
+				</configuration>
 			</plugin>
 
 		</plugins>
