@@ -488,7 +488,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
-				<version>3.1.0</version>
+				<version>3.1.1</version>
 			</plugin>
 
 			<plugin>
@@ -503,11 +503,6 @@
 					<reportSet>
 						<reports>
 							<report>javadoc</report>
-						</reports>
-					</reportSet>
-
-					<reportSet>
-						<reports>
 							<report>test-javadoc</report>
 						</reports>
 						<configuration>
@@ -531,7 +526,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-report-plugin</artifactId>
-				<version>3.0.0-M4</version>
+				<version>3.0.0-M5</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
