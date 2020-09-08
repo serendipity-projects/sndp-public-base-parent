@@ -478,9 +478,21 @@
 
 			</plugin>
 
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-checkstyle-plugin</artifactId>
+				<version>3.1.1</version> <dependencies> <dependency> <groupId>com.github.checkstyle</groupId>
+				<artifactId>checkstyle-sonar-plugin</artifactId> <version>8.35</version>
+				</dependency> </dependencies> </plugin> -->
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>3.13.0</version>
+			</plugin>
+
 		</plugins>
 	</build>
 
+	<!-- ******* REPORTING ******* -->
 	<reporting>
 		<plugins>
 
@@ -569,17 +581,27 @@
 				</configuration>
 			</plugin>
 
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-checkstyle-plugin</artifactId>
+				<version>3.1.1</version> <reportSets> <reportSet> <reports> <report>checkstyle</report>
+				</reports> </reportSet> </reportSets> </plugin> -->
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>3.1.1</version>
-				<reportSets>
-					<reportSet>
-						<reports>
-							<report>checkstyle</report>
-						</reports>
-					</reportSet>
-				</reportSets>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>3.13.0</version>
+				<configuration>
+					<linkXref>true</linkXref>
+					<sourceEncoding>utf-8</sourceEncoding>
+
+					<excludes>
+						<exclude>**/*Bean.java</exclude>
+						<exclude>**/HelpMojo.java</exclude>
+						<exclude>**/generated/*.java</exclude>
+					</excludes>
+					<excludeRoots>
+						<excludeRoot>target/generated-sources/stubs</excludeRoot>
+					</excludeRoots>
+				</configuration>
 			</plugin>
 
 		</plugins>
