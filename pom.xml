@@ -61,8 +61,8 @@
 	</repositories>
 
 	<ciManagement>
-		<system>travis-ci</system>
-		<url>https://travis-ci.com/github/serendipity-projects/${project.artifactId}</url>
+		<system>github-actions</system>
+		<url>https://github.com/serendipity-projects/${project.artifactId}/actions</url>
 	</ciManagement>
 
 	<issueManagement>
