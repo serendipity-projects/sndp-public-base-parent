@@ -85,9 +85,13 @@
 		<maven.compiler.target>11</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<junit.version>5.7.0-RC1</junit.version>
-		<log4j.version>2.13.3</log4j.version>
-		<javadoc.plugin.version>3.2.0</javadoc.plugin.version>
+		
+		<doxia.version>1.10</doxia.version>
+		<scm.version>1.11.3</scm.version>
+		<junit.version>5.8.0-M1</junit.version>
+		<log4j.version>2.14.1</log4j.version>
+		
+		<javadoc.plugin.version>3.3.0</javadoc.plugin.version>
 
 		<!-- SITE properties -->
 		<site.input.directory>${project.reporting.outputDirectory}</site.input.directory>
@@ -107,7 +111,7 @@
 			<dependency>
 				<groupId>nl.jqno.equalsverifier</groupId>
 				<artifactId>equalsverifier</artifactId>
-				<version>3.4.2</version>
+				<version>3.7.1</version>
 				<scope>test</scope>
 			</dependency>
 		</dependencies>
@@ -148,7 +152,7 @@
 		<dependency>
 			<groupId>org.assertj</groupId>
 			<artifactId>assertj-core</artifactId>
-			<version>3.17.1</version>
+			<version>3.20.2</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -163,7 +167,7 @@
 			<plugin>
 				<groupId>com.amashchenko.maven.plugin</groupId>
 				<artifactId>gitflow-maven-plugin</artifactId>
-				<version>1.14.0</version>
+				<version>1.15.1</version>
 
 				<configuration>
 					<verbose>true</verbose>
@@ -314,38 +318,38 @@
 					<dependency>
 						<groupId>org.apache.maven.doxia</groupId>
 						<artifactId>doxia-module-markdown</artifactId>
-						<version>1.9.1</version>
+						<version>${doxia.version}</version>
 					</dependency>
 
 					<dependency>
 						<groupId>org.apache.maven.doxia</groupId>
 						<artifactId>doxia-sink-api</artifactId>
-						<version>1.9.1</version>
+						<version>${doxia.version}</version>
 					</dependency>
 
 					<!-- add support for scm -->
 					<dependency>
 						<groupId>org.apache.maven.wagon</groupId>
 						<artifactId>wagon-scm</artifactId>
-						<version>3.4.1</version>
+						<version>3.4.3</version>
 					</dependency>
 
 					<dependency>
 						<groupId>org.apache.maven.scm</groupId>
 						<artifactId>maven-scm-provider-gitexe</artifactId>
-						<version>1.11.2</version>
+						<version>${scm.version}</version>
 					</dependency>
 
 					<dependency>
 						<groupId>org.apache.maven.scm</groupId>
 						<artifactId>maven-scm-api</artifactId>
-						<version>1.11.2</version>
+						<version>${scm.version}</version>
 					</dependency>
 
 					<dependency>
 						<groupId>org.apache.maven.scm</groupId>
 						<artifactId>maven-scm-manager-plexus</artifactId>
-						<version>1.11.2</version>
+						<version>${scm.version}</version>
 					</dependency>
 
 				</dependencies>
@@ -363,19 +367,19 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
-				<version>3.1.0</version>
+				<version>3.1.2</version>
 			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.0.0-M3</version>
+				<version>3.0.0-M5</version>
 			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>3.0.0-M4</version>
+				<version>3.0.0-M5</version>
 				<configuration>
 					<skip>${skip.failsafe.tests}</skip>
 				</configuration>
@@ -392,7 +396,7 @@
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.5</version>
+				<version>0.8.6</version>
 				<configuration>
 					<excludes>
 						<exclude>it/serendigity/**/HelpMojo.*</exclude>
@@ -486,7 +490,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
-				<version>3.13.0</version>
+				<version>3.14.0</version>
 			</plugin>
 
 		</plugins>
@@ -500,7 +504,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
-				<version>3.1.1</version>
+				<version>3.1.2</version>
 			</plugin>
 
 			<plugin>
@@ -543,13 +547,13 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jxr-plugin</artifactId>
-				<version>3.0.0</version>
+				<version>3.1.1</version>
 			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-plugin-plugin</artifactId>
-				<version>3.6.0</version>
+				<version>3.6.1</version>
 			</plugin>
 
 			<plugin>
@@ -588,7 +592,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
-				<version>3.13.0</version>
+				<version>3.14.0</version>
 				<configuration>
 					<linkXref>true</linkXref>
 					<sourceEncoding>utf-8</sourceEncoding>
@@ -607,7 +611,7 @@
 			<plugin>
 				<groupId>com.github.spotbugs</groupId>
 				<artifactId>spotbugs-maven-plugin</artifactId>
-				<version>4.0.4</version>
+				<version>4.3.0</version>
 			</plugin>
 
 		</plugins>
@@ -620,7 +624,7 @@
 				<plugins>
 					<plugin>
 						<artifactId>maven-gpg-plugin</artifactId>
-						<version>1.6</version>
+						<version>3.0.1</version>
 						<executions>
 							<execution>
 								<id>sign-artifacts</id>
