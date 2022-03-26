@@ -6,7 +6,7 @@
 
 	<groupId>it.serendigity.maven.parent</groupId>
 	<artifactId>sndp-public-base-parent</artifactId>
-	<version>0.7.0-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>Basic parent pom for maven build configuration</name>
@@ -85,13 +85,13 @@
 		<maven.compiler.target>11</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		
-		<doxia.version>1.10</doxia.version>
-		<scm.version>1.11.3</scm.version>
-		<junit.version>5.8.0-M1</junit.version>
-		<log4j.version>2.14.1</log4j.version>
-		
-		<javadoc.plugin.version>3.3.0</javadoc.plugin.version>
+
+		<doxia.version>1.11.1</doxia.version>
+		<scm.version>1.12.2</scm.version>
+		<junit.version>5.8.2</junit.version>
+		<log4j.version>2.17.2</log4j.version>
+
+		<javadoc.plugin.version>3.3.1</javadoc.plugin.version>
 
 		<!-- SITE properties -->
 		<site.input.directory>${project.reporting.outputDirectory}</site.input.directory>
@@ -152,7 +152,7 @@
 		<dependency>
 			<groupId>org.assertj</groupId>
 			<artifactId>assertj-core</artifactId>
-			<version>3.20.2</version>
+			<version>3.22.0</version>
 			<scope>test</scope>
 		</dependency>
 
@@ -167,7 +167,7 @@
 			<plugin>
 				<groupId>com.amashchenko.maven.plugin</groupId>
 				<artifactId>gitflow-maven-plugin</artifactId>
-				<version>1.15.1</version>
+				<version>1.16.0</version>
 
 				<configuration>
 					<verbose>true</verbose>
@@ -180,7 +180,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-enforcer-plugin</artifactId>
-				<version>3.0.0-M3</version>
+				<version>3.0.0</version>
 				<executions>
 
 					<execution>
@@ -278,7 +278,7 @@
 			<plugin>
 				<groupId>org.sonatype.plugins</groupId>
 				<artifactId>nexus-staging-maven-plugin</artifactId>
-				<version>1.6.8</version>
+				<version>1.6.12</version>
 				<executions>
 					<execution>
 						<id>default-deploy</id>
@@ -331,7 +331,7 @@
 					<dependency>
 						<groupId>org.apache.maven.wagon</groupId>
 						<artifactId>wagon-scm</artifactId>
-						<version>3.4.3</version>
+						<version>3.5.1</version>
 					</dependency>
 
 					<dependency>
@@ -553,13 +553,13 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-plugin-plugin</artifactId>
-				<version>3.6.1</version>
+				<version>3.6.4</version>
 			</plugin>
 
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.8.5</version>
+				<version>0.8.7</version>
 				<configuration>
 					<excludes>
 						<exclude>it/serendigity/**/HelpMojo.*</exclude>
@@ -592,7 +592,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
-				<version>3.14.0</version>
+				<version>3.15.0</version>
 				<configuration>
 					<linkXref>true</linkXref>
 					<sourceEncoding>utf-8</sourceEncoding>
@@ -611,7 +611,7 @@
 			<plugin>
 				<groupId>com.github.spotbugs</groupId>
 				<artifactId>spotbugs-maven-plugin</artifactId>
-				<version>4.3.0</version>
+				<version>4.4.2.2</version>
 			</plugin>
 
 		</plugins>
