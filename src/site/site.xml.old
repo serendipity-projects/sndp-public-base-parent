@@ -46,18 +46,9 @@
 @project.name@ will be replaced by the template; if we used ${project.name} it would pick up Commons Parent
 -->
 <footer>
+<div class="center">
+Serendipity Open source project @project.name@.
+</div>
 </footer>
-	<fluidoSkin>
-		<copyrightClass>pull-right</copyrightClass>
-		<topBarEnabled>false</topBarEnabled>
-		<topBarContainerStyle>width: 90%;</topBarContainerStyle>
-	<breadcrumbDivider>»</breadcrumbDivider>
-	<twitter>
-		<user>serendigityinfo</user>
-		<showUser>true</showUser>
-		<showFollowers>true</showFollowers>
-	</twitter>
-	</fluidoSkin>
-
 </custom>
 </project>
