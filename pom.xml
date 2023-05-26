@@ -299,6 +299,8 @@
                 <artifactId>maven-site-plugin</artifactId>
                 <version>4.0.0-M8</version>
 
+
+
                 <executions>
                     <execution>
                         <id>attach-descriptor</id>
@@ -356,6 +358,7 @@
                     <outputDirectory>${site.output.directory}</outputDirectory>
                     <stagingSiteURL>${project.distributionManagement.site.url}</stagingSiteURL>
                     <topSiteURL>${project.distributionManagement.site.url}</topSiteURL>
+                    <skipDeploy>true</skipDeploy>
                 </configuration>
 
             </plugin>
@@ -676,21 +679,40 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-scm-publish-plugin</artifactId>
-                        <version>3.0.0</version>
+                        <version>3.2.1</version>
+
                         <executions>
                             <execution>
-                                <id>publish-site</id>
+                                <id>publish-docs</id>
                                 <phase>site-deploy</phase>
+                                <inherited>true</inherited>
                                 <goals>
                                     <goal>publish-scm</goal>
                                 </goals>
+
                                 <configuration>
-                                    <!--<serverId>github-serendipity-projects</serverId>-->
+                                    <!--<content>${project.build.directory}/staging</content>-->
                                     <scmBranch>gh-pages</scmBranch>
-                                    <tryUpdate>true</tryUpdate>
                                 </configuration>
+
                             </execution>
                         </executions>
+
+                        <dependencies>
+
+                            <!-- add support for scm -->
+
+                            <dependency>
+                                <groupId>org.apache.maven.scm</groupId>
+                                <artifactId>maven-scm-provider-gitexe</artifactId>
+                                <version>2.0.1</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.apache.maven.scm</groupId>
+                                <artifactId>maven-scm-api</artifactId>
+                                <version>2.0.1</version>
+                            </dependency>
+                        </dependencies>
                     </plugin>
                 </plugins>
             </build>
