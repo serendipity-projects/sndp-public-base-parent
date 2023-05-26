@@ -356,7 +356,7 @@
 
                     <inputDirectory>${site.input.directory}</inputDirectory>
                     <outputDirectory>${site.output.directory}</outputDirectory>
-                    <stagingSiteURL>${project.distributionManagement.site.url}</stagingSiteURL>
+                    <stagingSiteURL>${project.build}/site/staging</stagingSiteURL>
                     <topSiteURL>${project.distributionManagement.site.url}</topSiteURL>
                     <skipDeploy>true</skipDeploy>
                 </configuration>
@@ -689,7 +689,7 @@
                                 </goals>
 
                                 <configuration>
-                                    <stagingDirectory>${project.distributionManagement.site.url}/staging</stagingDirectory>
+                                    <stagingDirectory>${project.build.site}/staging</stagingDirectory>
                                     <topSiteURL>${project.distributionManagement.site.url}</topSiteURL>
                                     <skipDeploy>true</skipDeploy>
                                 </configuration>
