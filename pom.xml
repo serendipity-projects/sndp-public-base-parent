@@ -91,7 +91,7 @@
 		<junit.version>5.10.0-M1</junit.version>
 		<log4j.version>2.20.0</log4j.version>
 
-		<javadoc.plugin.version>3.3.2</javadoc.plugin.version>
+		<javadoc.plugin.version>3.5.0</javadoc.plugin.version>
 
 		<!-- SITE properties -->
 		<site.input.directory>${project.reporting.outputDirectory}</site.input.directory>
