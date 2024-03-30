@@ -86,12 +86,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <doxia.version>2.0.0-M6</doxia.version>
+        <doxia.version>2.0.0-M9</doxia.version>
         <scm.version>2.0.1</scm.version>
-        <junit.version>5.10.0-M1</junit.version>
-        <log4j.version>2.20.0</log4j.version>
+        <junit.version>5.10.2</junit.version>
+        <log4j.version>2.23.1</log4j.version>
 
-        <javadoc.plugin.version>3.5.0</javadoc.plugin.version>
+        <javadoc.plugin.version>3.6.3</javadoc.plugin.version>
 
         <!-- SITE properties -->
         <site.input.directory>${project.reporting.outputDirectory}</site.input.directory>
@@ -116,7 +116,7 @@
             <dependency>
                 <groupId>nl.jqno.equalsverifier</groupId>
                 <artifactId>equalsverifier</artifactId>
-                <version>3.14.1</version>
+                <version>3.16</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>
@@ -157,7 +157,7 @@
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>3.24.2</version>
+            <version>3.25.3</version>
             <scope>test</scope>
         </dependency>
 
@@ -172,7 +172,7 @@
             <plugin>
                 <groupId>com.amashchenko.maven.plugin</groupId>
                 <artifactId>gitflow-maven-plugin</artifactId>
-                <version>1.19.0</version>
+                <version>1.21.0</version>
 
                 <configuration>
                     <verbose>true</verbose>
@@ -185,7 +185,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>3.4.1</version>
                 <executions>
 
                     <execution>
@@ -245,7 +245,7 @@
 
             <plugin>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>3.2.1</version>
+                <version>3.3.0</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
@@ -260,7 +260,7 @@
             <!-- -->
             <plugin>
                 <artifactId>maven-deploy-plugin</artifactId>
-                <version>3.0.0-M1</version>
+                <version>3.1.1</version>
                 <executions>
                     <execution>
                         <id>skip-default-deploy</id>
@@ -301,10 +301,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>4.0.0-M8</version>
-
-
-
+                <version>4.0.0-M13</version>
                 <executions>
                     <execution>
                         <id>attach-descriptor</id>
@@ -370,19 +367,19 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>3.4.3</version>
+                <version>3.5.0</version>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>3.2.5</version>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>3.2.5</version>
                 <configuration>
                     <skip>${skip.failsafe.tests}</skip>
                 </configuration>
@@ -399,7 +396,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.10</version>
+                <version>0.8.11</version>
                 <configuration>
                     <excludes>
                         <exclude>it/serendigity/**/HelpMojo.*</exclude>
@@ -493,7 +490,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
-                <version>3.21.0</version>
+                <version>3.21.2</version>
             </plugin>
 
         </plugins>
@@ -545,24 +542,24 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>3.0.0-M5</version>
+                <version>3.2.5</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jxr-plugin</artifactId>
-                <version>3.1.1</version>
+                <version>3.3.2</version>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-plugin-plugin</artifactId>
-                <version>3.6.4</version>
+                <version>3.11.0</version>
             </plugin>
 
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.10</version>
+                <version>0.8.11</version>
                 <configuration>
                     <excludes>
                         <exclude>it/serendigity/**/HelpMojo.*</exclude>
@@ -595,7 +592,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
-                <version>3.21.0</version>
+                <version>3.21.2</version>
                 <configuration>
                     <linkXref>true</linkXref>
                     <sourceEncoding>utf-8</sourceEncoding>
@@ -614,7 +611,7 @@
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
-                <version>4.4.2.2</version>
+                <version>4.8.3.1</version>
             </plugin>
 
         </plugins>
@@ -627,7 +624,7 @@
                 <plugins>
                     <plugin>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>3.0.1</version>
+                        <version>3.2.2</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
