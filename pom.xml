@@ -6,7 +6,7 @@
 
     <groupId>it.serendigity.maven.parent</groupId>
     <artifactId>sndp-public-base-parent</artifactId>
-    <version>1.1.5-SNAPSHOT</version>
+    <version>1.2.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>sndp-public-base-parent</name>
@@ -86,7 +86,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <doxia.version>2.0.0-M9</doxia.version>
+        <!-- Nota: versione 2.0.0 M9 Non funziona quando si lancia site dà errore con markdown-->
+        <doxia.version>2.0.0-M8</doxia.version>
+
         <scm.version>2.0.1</scm.version>
         <junit.version>5.10.2</junit.version>
         <log4j.version>2.23.1</log4j.version>
