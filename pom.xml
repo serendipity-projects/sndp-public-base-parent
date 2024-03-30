@@ -109,6 +109,7 @@
         <site.deploy.rootdir>${user.home}/test/maven_site</site.deploy.rootdir>
         <site.skip.deploy>false</site.skip.deploy>
         <!-- Sonar -->
+        <sonar.organization>serendipity-projects</sonar.organization>
         <sonar.cloud.host>https://sonarcloud.io</sonar.cloud.host>
     </properties>
 
@@ -201,7 +202,7 @@
                         <configuration>
                             <rules>
                                 <requireJavaVersion>
-                                    <version>[11,)</version>
+                                    <version>[17,)</version>
                                 </requireJavaVersion>
                             </rules>
                             <fail>true</fail>
